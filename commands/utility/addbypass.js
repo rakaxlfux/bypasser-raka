@@ -12,6 +12,7 @@ module.exports = {
             ),
 
     async execute(interaction) {
+        if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
         const link = interaction.options.getString('link');
         let apiUrl;
         let param;
@@ -24,6 +25,9 @@ module.exports = {
             if (link.includes('codex')) {
                 apiUrl = "https://stickx.top/api-codex/?token=";
                 param = parsedUrl.searchParams.get('token');
+            } else if (link.includes('arceusx')) {
+                apiUrl = "https://stickx.top/api-arceusx/?hwid=";
+                param = parsedUrl.searchParams.get('hwid');
             } else if (link.includes('hydrogen')) {
                 apiUrl = "https://stickx.top/api-hydrogen/?hwid=";
                 param = parsedUrl.searchParams.get('hwid');
@@ -35,7 +39,7 @@ module.exports = {
                 param = parsedUrl.searchParams.get('hwid');
             }
 
-            param += "&api_key=E99l9NOctud3vmu6bPne";
+            param += "Put The ApiKey Here";
             const [param1, apiKey] = param.split('&');
 
         // Send a waiting message
@@ -54,16 +58,20 @@ module.exports = {
             // Handle the success case
             const successEmbed = new EmbedBuilder()
                 .setTitle("Multi-Bypass")
-                .setDescription(`You Have Been **Whitelisted**!\nPlease Launch Your Android Executor\n**Responses**: ${data.key}\n**HWID:**\n\`\`\`${param1}\`\`\``) // Include the actual key from the response
+                .setDescription(`The Bypass Has Been **Executed**!\nAnd Please Check The Responses.`) // Include the actual key from the response
                 .setColor(0x00FF00)
-                .setThumbnail('https://i.imgur.com/qxNde5B.png')
+                .setThumbnail('https://i.imgur.com/ewbSyHv.png') // Yall can change this.
+                .addFields(
+                    { name: '**Responses** (PC):', value: `\`\`\`${data.key}\`\`\`` },
+                    { name: '**Responses** (PHONE):', value: `${data.key}` },
+                )
                 .setTimestamp()
-                .setFooter({ text: 'Made by ! raka', iconURL: 'https://i.imgur.com/ONHipCl.jpeg' });
+                .setFooter({ text: 'Made by ! raka', iconURL: 'https://i.imgur.com/ONHipCl.jpeg' }); // Yall can change it if ya want.
             await interaction.editReply({ embeds: [successEmbed] });
         } else {
             // Handle the error case
             const errorEmbed = new EmbedBuilder()
-                .setTitle("Bypass Error ❎")
+                .setTitle("Bypass Failed!")
                 .setDescription("An error occurred during the bypass operation.")
                 .setColor(0xFF0000);
             await interaction.editReply({ embeds: [errorEmbed] });
@@ -77,5 +85,8 @@ module.exports = {
             await interaction.reply(`An error occurred: ${error.message}`);
         }
     }
+} else {
+    await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
 }
+    }
 };
