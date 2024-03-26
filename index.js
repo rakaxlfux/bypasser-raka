@@ -35,9 +35,8 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 
 	setInterval(() => {
-        const membersCount = client.guilds.cache.reduce((total, guild) => total + guild.memberCount, 0);
         client.user.setPresence({
-            activities: [{ name: `${membersCount} users in 1 servers`, type: ActivityType.Watching }],
+            activities: [{ name: `cool`, type: ActivityType.Watching }],
             status: 'dnd',
         });
     }, 1000); // Adjust the interval time (in milliseconds) as needed
