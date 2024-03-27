@@ -7,7 +7,6 @@ module.exports = {
         .setDescription('Get the API status'),
 
         async execute(interaction, client) {
-            if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
             try {
                 const response = await fetch('https://stickx.top/api-key/');
                 const data = await response.json();
@@ -36,8 +35,5 @@ module.exports = {
                 console.error('Error fetching API status:', error);
                 await interaction.reply('Failed to fetch API status.');
             }
-        } else {
-            await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
-        }
         }
     };
