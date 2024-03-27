@@ -12,6 +12,7 @@ module.exports = {
             ),
 
     async execute(interaction) {
+        if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
         const link = interaction.options.getString('link');
         let apiUrl;
         let param;
@@ -27,6 +28,12 @@ module.exports = {
             } else if (link.includes('arceusx')) {
                 apiUrl = "https://stickx.top/api-arceusx/?hwid=";
                 param = parsedUrl.searchParams.get('hwid');
+            } else if (link.includes('vegax')) {
+                apiUrl = "https://stickx.top/api-vegax/?hwid=";
+                param = parsedUrl.searchParams.get('hwid');
+            } else if (link.includes('platoboost')) {
+                apiUrl = "https://stickx.top/api-delta/?hwid=";
+                param = parsedUrl.searchParams.get('hwid');
             } else if (link.includes('hydrogen')) {
                 apiUrl = "https://stickx.top/api-hydrogen/?hwid=";
                 param = parsedUrl.searchParams.get('hwid');
@@ -38,7 +45,7 @@ module.exports = {
                 param = parsedUrl.searchParams.get('hwid');
             }
 
-            param += "Put The ApiKey Here";
+            param += "&api_key=E99l9NOctud3vmu6bPne";
             const [param1, apiKey] = param.split('&');
 
         // Send a waiting message
@@ -84,5 +91,8 @@ module.exports = {
             await interaction.reply(`An error occurred: ${error.message}`);
         }
     }
+} else {
+    await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
+}
     }
 };

@@ -7,33 +7,39 @@ module.exports = {
         .setDescription('Get the API status'),
 
         async execute(interaction, client) {
-            try {
-                const response = await fetch('https://stickx.top/api-key/');
-                const data = await response.json();
-        
-                let statusMessage = data.status; // Default message
-                if (data.status === 'success') {
-                    statusMessage = 'Succeeded.'; // Custom message for 'success'
-        
-                    const { api_key, quota } = data.data[0];
-                    const embed = new EmbedBuilder()
-                        .setColor(0x0099FF)
-                        .setTitle('API Status')
-                        .addFields(
-                            { name: 'Status', value: `\`\`${statusMessage}\`\`` },
-                            { name: 'API Key', value: `\`\`${api_key}\`\`` },
-                            { name: 'Quota', value: `\`\`${quota.toString()}\`\`` }
-                        )
-                        .setTimestamp()
-                        .setFooter({ text: 'Made by ! raka', iconURL: 'https://i.imgur.com/ONHipCl.jpeg' });
-        
-                    await interaction.reply({ embeds: [embed] });
-                } else {
-                    await interaction.reply('API returned an unsuccessful status.');
-                }
-            } catch (error) {
-                console.error('Error fetching API status:', error);
-                await interaction.reply('Failed to fetch API status.');
+            if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
+                 try {
+            const response = await fetch('https://stickx.top/api-key/');
+            const data = await response.json();
+
+            // Construct the status string with capitalized keys for status_api
+            let statusApiString = '';
+            for (const [key, value] of Object.entries(data.status_api)) {
+                statusApiString += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}\n`; // Capitalize first letter
             }
+
+            // Extract api_key and quota from data
+            const { api_key, quota } = data.data[0];
+
+            // Create the embed message
+            const embed = new EmbedBuilder()
+                .setColor(0x0099FF)
+                .setTitle('API Status and Details')
+                .addFields(
+                    { name: 'Status API', value: statusApiString },
+                    { name: 'API Key', value: api_key },
+                    { name: 'Quota', value: quota.toString() }
+                )
+                .setTimestamp();
+
+            // Send the embed message as a reply
+            await interaction.reply({ embeds: [embed] });
+        } catch (error) {
+            console.error('Error fetching API status:', error);
+            await interaction.reply('Failed to fetch API status.');
+        }
+        } else {
+            await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
+        }
         }
     };
