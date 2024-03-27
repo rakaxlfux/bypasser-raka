@@ -12,7 +12,6 @@ module.exports = {
             ),
 
     async execute(interaction) {
-        if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
         const link = interaction.options.getString('link');
         let apiUrl;
         let param;
@@ -91,8 +90,5 @@ module.exports = {
             await interaction.reply(`An error occurred: ${error.message}`);
         }
     }
-} else {
-    await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
-}
     }
 };
