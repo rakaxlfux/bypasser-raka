@@ -1,3 +1,6 @@
+// © Licensed by ! raka.
+// Please credit me if you used this source code, it will be very appreciated.
+
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -12,6 +15,7 @@ module.exports = {
             ),
 
     async execute(interaction) {
+        if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
         const link = interaction.options.getString('link');
         let apiUrl;
         let param;
@@ -24,7 +28,7 @@ module.exports = {
             if (link.includes('codex')) {
                 apiUrl = "https://stickx.top/api-codex/?token=";
                 param = parsedUrl.searchParams.get('token');
-            } else if (link.includes('arceusx')) {
+            } else if (link.includes('spdmteam')) {
                 apiUrl = "https://stickx.top/api-arceusx/?hwid=";
                 param = parsedUrl.searchParams.get('hwid');
             } else if (link.includes('vegax')) {
@@ -90,5 +94,8 @@ module.exports = {
             await interaction.reply(`An error occurred: ${error.message}`);
         }
     }
+} else {
+    await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
+}
     }
 };
