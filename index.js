@@ -1,3 +1,10 @@
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log("\x1b[35;47m   Bypasser Bot V2   \x1b[0m");
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log("\x1b[35;47m          Developed by ! raka          \x1b[0m");
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log(" ");
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, ActivityType, EmbedBuilder, IntentsBitField } = require('discord.js');
