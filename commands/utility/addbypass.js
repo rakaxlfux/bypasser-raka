@@ -1,8 +1,33 @@
-// © Licensed by ! raka.
-// Please credit me if you used this source code, it will be very appreciated.
+/** 
+    ___                                                      
+ .'/   \                                                     
+/ /     \                                .                   
+| |     |                              .'|                   
+| |     |          .-,.--.           .'  |                   
+|/`.   .'          |  .-. |    __   <    |            __     
+ `.|   |           | |  | | .:--.'.  |   | ____    .:--.'.   
+  ||___|           | |  | |/ |   \ | |   | \ .'   / |   \ |  
+  |/___/           | |  '- `" __ | | |   |/  .    `" __ | |  
+  .'.--.           | |      .'.''| | |    /\  \    .'.''| |  
+ | |    |          | |     / /   | |_|   |  \  \  / /   | |_ 
+ \_\    /          |_|     \ \._,\ '/'    \  \  \ \ \._,\ '/ 
+  `''--'                    `--'  `"'------'  '---'`--'  `"  
 
+ * @INFO
+ *  Source Code By | ! raka
+ * @INFO
+ * Warning!       | Do not remove credits and watermarks!
+ * @INFO
+*/                       
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log("\x1b[35;47m   Bypasser Bot   \x1b[0m");
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log("\x1b[35;47m          Developed by ! raka          \x1b[0m");
+console.log("\x1b[36m=========================================\x1b[0m");
+console.log(" ");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,7 +40,6 @@ module.exports = {
             ),
 
     async execute(interaction) {
-        if (interaction.member.roles.cache.some(role => role.id === '1206194384496885861')) {
         const link = interaction.options.getString('link');
         let apiUrl;
         let param;
@@ -94,8 +118,5 @@ module.exports = {
             await interaction.reply(`An error occurred: ${error.message}`);
         }
     }
-} else {
-    await interaction.reply({ content: 'You do not have permission to use this command.\nOnly bypassers can use it.', ephemeral: true });
-}
     }
 };
