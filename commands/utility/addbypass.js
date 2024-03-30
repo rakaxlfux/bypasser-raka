@@ -22,13 +22,6 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-console.log("\x1b[36m=========================================\x1b[0m");
-console.log("\x1b[35;47m   Bypasser Bot   \x1b[0m");
-console.log("\x1b[36m=========================================\x1b[0m");
-console.log("\x1b[35;47m          Developed by ! raka          \x1b[0m");
-console.log("\x1b[36m=========================================\x1b[0m");
-console.log(" ");
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bypass') // Replace with your desired command name
