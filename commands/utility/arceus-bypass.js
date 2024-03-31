@@ -1,3 +1,20 @@
+/*
+  _             _                                 
+ | |           | |                                
+ | |  _ __ __ _| | ____ _     _   ___  ___   _    
+ | | | '__/ _` | |/ / _` |   | | | \ \/ / | | |   
+ |_| | | | (_| |   < (_| |_  | |_| |>  <| |_| |_  
+ (_) |_|  \__,_|_|\_\__,_( )  \__, /_/\_\\__,_(_) 
+                         |/    __/ |              
+                              |___/     
+    
+            ALL CREDITS                              
+    *    Credits : ! raka, Yxu     *
+    |    Code by : ! raka          |
+    *    Api made by : Yxu         |
+    *------------------------------*
+    |    Discord.js : v14.1.1      |
+**/   
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const axios = require('axios');
@@ -58,21 +75,5 @@ module.exports = {
       }
     }
 };
-/*
-  _             _                                 
- | |           | |                                
- | |  _ __ __ _| | ____ _     _   ___  ___   _    
- | | | '__/ _` | |/ / _` |   | | | \ \/ / | | |   
- |_| | | | (_| |   < (_| |_  | |_| |>  <| |_| |_  
- (_) |_|  \__,_|_|\_\__,_( )  \__, /_/\_\\__,_(_) 
-                         |/    __/ |              
-                              |___/     
-    
-            ALL CREDITS                              
-    *    Credits : ! raka, Yxu     *
-    |    Code by : ! raka          |
-    *    Api made by : Yxu         |
-    *------------------------------*
-    |    Discord.js : v14.1.1      |
-**/                            
+                         
     
