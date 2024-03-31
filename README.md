@@ -15,6 +15,12 @@ Done, easy right?
 To check the api status
 1. ``/apistatus``
 > - __~~================~~__ |
+
+If youre using discord bot hosting :
+1. Open visual studio code
+2. Do ``node deploy-commands.js``
+3. Now you can start your host.
+   
 ## Updates
 All updates is in the github.
 **25/03/2024** - Made the embed looks prettier
